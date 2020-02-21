@@ -57,10 +57,25 @@ let multiItemSlider = (function() {
             _sliderWrapper.style.transform = 'translateX(' + _transform + '%)';
         }
 
-        _interval = setInterval(function() {
+        let _interval = setInterval(function() {
             _transformItem();
         }, 6000);
     }
 }());
 
-let slider = multiItemSlider()
+let slider = multiItemSlider();
+
+function imgResize() {
+    if (document.documentElement.clientWidth / document.documentElement.clientHeight > 1.4) {
+        let elem = document.querySelectorAll('.slider__item img');
+        elem.forEach(function(elem) {
+            elem.style.width = "100%";
+            elem.style.marginLeft = '0';
+        })
+    } else {
+        let elem = document.querySelectorAll('.slider__item img');
+        elem.forEach(function(elem) {
+            elem.removeAttribute("style");
+        })
+    }
+}
